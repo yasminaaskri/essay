@@ -1,9 +1,10 @@
-// Cartslice.ts
+"use client";
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Product {
-  id: number;
-  // Add other properties based on the actual product structure
+  _id: string;
+  ref: string;
 }
 
 const cartSlice = createSlice({
@@ -11,10 +12,11 @@ const cartSlice = createSlice({
   initialState: [] as Product[],
   reducers: {
     add(state, action: PayloadAction<Product>) {
-      state.push(action.payload);
+      state.push({ ...action.payload, ref: Date.now().toString() });
     },
-    remove(state, action: PayloadAction<number>) {
-      return state.filter((item) => item.id !== action.payload);
+    remove(state, action: PayloadAction<string>) {
+      console.log(action);
+      return state.filter((item) => item.ref !== action.payload);
     },
   },
 });

@@ -1,8 +1,8 @@
-// RootLayout.tsx
-
-import './globals.css';
-import CustomProvider from '../redux/Provider';
-import { Inter } from 'next/font/google'
+"use client";
+import Navbar from "./components/Navbar";
+import "./globals.css";
+import CustomProvider from "../redux/Provider";
+import Form from "./sign-in/page";
 interface RootLayoutProps {
   children: React.ReactNode;
 }
@@ -10,9 +10,9 @@ interface RootLayoutProps {
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
-      <body >
+      <body>
         <CustomProvider>
-         
+          <Navbar />
           {children}
         </CustomProvider>
       </body>
